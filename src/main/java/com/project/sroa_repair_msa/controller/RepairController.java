@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @ResponseBody
 public class RepairController {
+    // status : 0-> 예약완료 , 1 -> 처리 완료, 2 -> 수령, 3 -> 수리 완료, 4 -> 반납예약완료, 5-> 평가 완료
     RepairService repairService;
 
     @Autowired
@@ -20,7 +21,6 @@ public class RepairController {
     }
 
 
-    // status : 0-> 예약완료 , 1 -> 처리 완료, 2 -> 수령, 3 -> 수리 완료(반납 전), 4 ->  평가 완료
     @PostMapping("repair/engineer/requestForCompletion")
     public boolean requestForCompletion(@RequestBody ScheduleHandling form) {
         Schedule schedule = repairService.searchSchedule(form.getScheduleNum());

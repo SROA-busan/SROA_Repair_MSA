@@ -25,25 +25,7 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public boolean completeRepair(Schedule schedule) {
-        if (schedule.getStatus() == 0 || schedule.getStatus() == 3) {
-            scheduleRepository.updateEndDate(schedule.getScheduleNum(), Timestamp.valueOf(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))));
-            scheduleRepository.updateStatus(schedule.getScheduleNum(), 1);
-        } else {
-            return false;
-        }
-        //고객한테 알림 요청, 평가쓰라고
-        return true;
-    }
-
-    @Override
-    public void receiveProduct(Schedule schedule) {
-        scheduleRepository.updateStatus(schedule.getScheduleNum(), 2);
-    }
-
-    @Override
-    public void repairOfReceive(Schedule schedule) {
-        scheduleRepository.updateStatus(schedule.getScheduleNum(), 4);
-        // 고객한테 알림 보내야함
+    public void updateState(Long scheduleNum, Integer i) {
+        scheduleRepository.updateStatus(scheduleNum, i);
     }
 }

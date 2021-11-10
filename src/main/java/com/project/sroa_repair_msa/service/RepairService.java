@@ -7,9 +7,6 @@ public interface RepairService {
 
     Schedule searchSchedule(Long scheduleNum);
 
-    boolean completeRepair(Schedule schedule);
 
-    void receiveProduct(Schedule schedule);
-
-    void repairOfReceive(Schedule schedule);
+    void updateState(Long scheduleNum, Integer i);
 }

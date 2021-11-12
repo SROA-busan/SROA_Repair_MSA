@@ -19,7 +19,7 @@ public class RepairController {
     }
 
     // 입고 처리
-    @GetMapping("repair/engineer/requestWarehousing/{scheduleNum}")
+    @GetMapping("/repair/engineer/requestWarehousing/{scheduleNum}")
     public boolean requestWarehousing(@PathVariable("scheduleNum") Long scheduleNum) {
         Schedule schedule = repairService.searchSchedule(scheduleNum);
 
@@ -31,7 +31,7 @@ public class RepairController {
         return true;
     }
     // 고객 대면, 처리 완료
-    @GetMapping("repair/engineer/requestComplete/{scheduleNum}")
+    @GetMapping("/repair/engineer/requestComplete/{scheduleNum}")
     public boolean requestComplete(@PathVariable("scheduleNum") Long scheduleNum) {
         Schedule schedule = repairService.searchSchedule(scheduleNum);
         if(schedule.getStatus()!=0&&schedule.getStatus()!=4)
@@ -41,7 +41,7 @@ public class RepairController {
         return true;
     }
     // 입고중인 장비 수리 완료
-    @GetMapping("repair/engineer/requestRepair/{scheduleNum}")
+    @GetMapping("/repair/engineer/requestRepair/{scheduleNum}")
     public boolean requestRepair(@PathVariable("scheduleNum") Long scheduleNum) {
         Schedule schedule = repairService.searchSchedule(scheduleNum);
         if(schedule.getStatus()!=2)

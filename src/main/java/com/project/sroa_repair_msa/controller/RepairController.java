@@ -18,6 +18,11 @@ public class RepairController {
         this.repairService = repairService;
     }
 
+
+    @GetMapping("/repair/healthCheck")
+    public boolean healthCheck(){
+        return true;
+    }
     // 입고 처리
     @GetMapping("/repair/engineer/requestWarehousing/{scheduleNum}")
     public boolean requestWarehousing(@PathVariable("scheduleNum") Long scheduleNum) {

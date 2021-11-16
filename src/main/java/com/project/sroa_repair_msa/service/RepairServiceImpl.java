@@ -28,4 +28,10 @@ public class RepairServiceImpl implements RepairService {
     public void updateState(Long scheduleNum, Integer i) {
         scheduleRepository.updateStatus(scheduleNum, i);
     }
+
+    @Override
+    public void updateEndDateAtNow(Long scheduleNum) {
+        LocalDateTime now = LocalDateTime.now();
+        scheduleRepository.updateEndDate(scheduleNum, now);
+    }
 }

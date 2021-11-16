@@ -9,4 +9,6 @@ public interface RepairService {
 
 
     void updateState(Long scheduleNum, Integer i);
+
+    void updateEndDateAtNow(Long scheduleNum);
 }

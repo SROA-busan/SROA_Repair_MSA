@@ -39,8 +39,10 @@ public class RepairController {
     @GetMapping("/repair/engineer/requestComplete/{scheduleNum}")
     public boolean requestComplete(@PathVariable("scheduleNum") Long scheduleNum) {
         Schedule schedule = repairService.searchSchedule(scheduleNum);
+        System.out.println(schedule.getScheduleNum());
         if(schedule.getStatus()!=0&&schedule.getStatus()!=4)
             return false;
+        repairService.updateEndDateAtNow(scheduleNum);
         repairService.updateState(scheduleNum, 1);
 
         return true;
